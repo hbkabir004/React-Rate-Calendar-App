@@ -3,11 +3,7 @@ import { LocalizationProvider } from "@mui/x-date-pickers";
 import { DateRange, DateRangePicker } from "@mui/x-date-pickers-pro";
 import { AdapterMoment } from "@mui/x-date-pickers/AdapterMoment";
 import { Moment } from "moment";
-
-interface CustomDateRangePickerProps {
-  value: DateRange<Moment>;
-  onChange: (newValue: DateRange<Moment>) => void;
-}
+import { CustomDateRangePickerProps } from "../model/props";
 
 export default function CustomDateRangePicker({
   value,

@@ -1,8 +1,13 @@
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import RateCalendarContainer from "./components/RateCalendarContainer";
 
-export default function App() {
-  
+const queryClient = new QueryClient();
+
+export default function App() {  
   return (
-   <RateCalendarContainer/>
+    <QueryClientProvider client={queryClient}>
+      <RateCalendarContainer/>
+    </QueryClientProvider>
+
   )
 }
