@@ -12,17 +12,16 @@ import { RoomCategoryProps } from "../model/props";
 import { IRatePlan, IRoomInventoryCalendar } from "../model/types";
 
 export default function RoomCategory({ category }: RoomCategoryProps) {
-  // Extract the relevant data for the first 16 days for simplicity
-  const inventoryCalendar: IRoomInventoryCalendar[] =
-    category.inventory_calendar.slice(0, 16);
+
+  // For simplicity, extracting the pertinent data for the first 20 days.
+  const inventoryCalendar: IRoomInventoryCalendar[] = category.inventory_calendar.slice(0, 20);
   const ratePlan: IRatePlan | undefined = category.rate_plans[0];
-  const rateCalendar = ratePlan?.calendar.slice(0, 16) || [];
+  const rateCalendar = ratePlan?.calendar.slice(0, 20) || [];
 
   return (
     <TableContainer
       component={Paper}
       sx={{
-        p: 4,
         minWidth: "100rem",
         backgroundColor: "whitesmoke",
         border: "1px solid lightgray",
@@ -31,11 +30,11 @@ export default function RoomCategory({ category }: RoomCategoryProps) {
       }}
     >
       <Table sx={{ width: "100vw", borderCollapse: "collapse" }}>
-        <TableHead sx={{ width: "100vw" }}>
+        <TableHead sx={{ width: "100vw", border: "1px solid lightgray",}}>
           <TableRow>
             <TableCell
               sx={{
-                border: "1px solid",
+                border: "1px solid lightgray",
                 p: 2,
                 textAlign: "center",
                 position: "sticky",
@@ -49,7 +48,7 @@ export default function RoomCategory({ category }: RoomCategoryProps) {
                 key={item.date}
                 align="right"
                 sx={{
-                  border: "1px solid",
+                  border: "1px solid lightgray",
                   p: 2,
                 }}
                 colSpan={1}
@@ -74,7 +73,7 @@ export default function RoomCategory({ category }: RoomCategoryProps) {
           <TableRow>
             <TableCell
               sx={{
-                border: "1px solid",
+                border: "1px solid lightgray",
                 p: 2,
                 textAlign: "left",
                 fontWeight: 800,
@@ -90,7 +89,7 @@ export default function RoomCategory({ category }: RoomCategoryProps) {
           <TableRow>
             <TableCell
               sx={{
-                border: "1px solid",
+                border: "1px solid lightgray",
                 p: 2,
                 textAlign: "left",
                 width: "max-content",
@@ -107,12 +106,12 @@ export default function RoomCategory({ category }: RoomCategoryProps) {
                 key={item.id}
                 align="center"
                 sx={{
-                  border: "1px solid",
+                  border: "1px solid lightgray",
                   p: 2,
                   textAlign: "center",
                   bgcolor: item.status ? "#4CAF50" : "#F44336",
                   color: "white",
-                  borderColor: "black",
+                  // borderColor: "lightgray",
                 }}
               >
                 {item.status ? "Open" : "Closed"}
@@ -122,7 +121,7 @@ export default function RoomCategory({ category }: RoomCategoryProps) {
           <TableRow>
             <TableCell
               sx={{
-                border: "1px solid",
+                border: "1px solid lightgray",
                 p: 2,
                 textAlign: "left",
                 position: "sticky",
@@ -138,7 +137,7 @@ export default function RoomCategory({ category }: RoomCategoryProps) {
                 key={item.id}
                 align="center"
                 sx={{
-                  border: "1px solid",
+                  border: "1px solid lightgray",
                   p: 2,
                   textAlign: "center",
                   bgcolor: item.status ? "inherit" : "#F44336",
@@ -151,7 +150,7 @@ export default function RoomCategory({ category }: RoomCategoryProps) {
           <TableRow>
             <TableCell
               sx={{
-                border: "1px solid",
+                border: "1px solid lightgray",
                 p: 2,
                 textAlign: "left",
                 position: "sticky",
@@ -167,7 +166,7 @@ export default function RoomCategory({ category }: RoomCategoryProps) {
                 key={item.id}
                 align="center"
                 sx={{
-                  border: "1px solid",
+                  border: "1px solid lightgray",
                   p: 2,
                   textAlign: "center",
                   bgcolor: item.status ? "inherit" : "#F44336",
@@ -180,7 +179,7 @@ export default function RoomCategory({ category }: RoomCategoryProps) {
           <TableRow>
             <TableCell
               sx={{
-                border: "1px solid",
+                border: "1px solid lightgray",
                 p: 2,
                 textAlign: "left",
                 position: "sticky",
@@ -196,7 +195,7 @@ export default function RoomCategory({ category }: RoomCategoryProps) {
                 key={item.id}
                 align="center"
                 sx={{
-                  border: "1px solid",
+                  border: "1px solid lightgray",
                   p: 2,
                   textAlign: "center",
                   bgcolor: inventoryCalendar[index].status
@@ -211,7 +210,7 @@ export default function RoomCategory({ category }: RoomCategoryProps) {
           <TableRow>
             <TableCell
               sx={{
-                border: "1px solid",
+                border: "1px solid lightgray",
                 p: 2,
                 textAlign: "left",
                 position: "sticky",
@@ -227,7 +226,7 @@ export default function RoomCategory({ category }: RoomCategoryProps) {
                 key={item.id}
                 align="center"
                 sx={{
-                  border: "1px solid",
+                  border: "1px solid lightgray",
                   p: 2,
                   textAlign: "center",
                   bgcolor: inventoryCalendar[index].status
@@ -242,7 +241,7 @@ export default function RoomCategory({ category }: RoomCategoryProps) {
           <TableRow>
             <TableCell
               sx={{
-                border: "1px solid",
+                border: "1px solid lightgray",
                 p: 2,
                 textAlign: "left",
                 position: "sticky",
@@ -258,7 +257,7 @@ export default function RoomCategory({ category }: RoomCategoryProps) {
                 key={item.id}
                 align="center"
                 sx={{
-                  border: "1px solid",
+                  border: "1px solid lightgray",
                   p: 2,
                   textAlign: "center",
                   bgcolor: inventoryCalendar[index].status
