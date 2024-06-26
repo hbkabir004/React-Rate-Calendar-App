@@ -1,10 +1,8 @@
-function App() {
+import RateCalendarContainer from "./components/RateCalendarContainer";
+
+export default function App() {
   
   return (
-    <div>
-      <h1>React Calendar App</h1>
-    </div>
+   <RateCalendarContainer/>
   )
 }
-
-export default App
