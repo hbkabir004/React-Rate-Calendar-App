@@ -1,19 +1,18 @@
 import { Box, CircularProgress, Container, Typography } from "@mui/material";
-import { DateRange } from "@mui/x-date-pickers-pro";
-import { Moment } from "moment";
+import { Dayjs } from 'dayjs';
 import { useState } from "react";
 import { useRateCalendar } from "../hooks/useRateCalendar";
-import { IRoomCategory } from "../model/types";
+import { IRoomCategory, UseRateCalendarResult } from "../model/types";
 import CustomDateRangePicker from "./CustomDateRangePicker";
 import RoomCategory from "./RoomCategory";
 
 export default function RateCalendarContainer() {
-  const [dateRange, setDateRange] = useState<DateRange<Moment>>([null, null]);
+  const [dateRange, setDateRange] = useState<[Dayjs | null, Dayjs | null]>([null, null]);
 
   const startDate = dateRange[0]?.format("YYYY-MM-DD") || "";
   const endDate = dateRange[1]?.format("YYYY-MM-DD") || "";
 
-  const { data, isLoading, error } = useRateCalendar(startDate, endDate);
+  const { data, isLoading, error } = useRateCalendar(startDate, endDate) as UseRateCalendarResult;
 
   return (
     <Container maxWidth="sm">
@@ -46,13 +45,11 @@ export default function RateCalendarContainer() {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
+          mt: '50px'
         }}
       >
         {isLoading && (
-          // <Box>
           <CircularProgress color="inherit" />
-          // <CircularWithValueLabel />
-          // </Box>
         )}
         {error && <Typography variant="h5" color="error">Failed to load data</Typography>}
       </Box>
@@ -61,8 +58,6 @@ export default function RateCalendarContainer() {
           data.map((category: IRoomCategory) => (
             <RoomCategory key={category.id} category={category} />
           ))}
-
-      {/* </Box> */}
     </Container>
   );
 }

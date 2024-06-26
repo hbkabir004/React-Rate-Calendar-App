@@ -27,4 +27,11 @@ export type IRateCalendar = {
     inventory_calendar: IRoomInventoryCalendar[];
     rate_plans: IRatePlan[];
   }
+
+ export type UseRateCalendarResult = {
+    data: IRoomCategory[] | null;
+    isLoading: boolean;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    error: any;
+  }
   

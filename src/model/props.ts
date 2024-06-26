@@ -1,11 +1,5 @@
-import { DateRange } from "@mui/x-date-pickers-pro";
-import { Moment } from "moment";
-import { IRoomCategory } from "./types";
 
-export type CustomDateRangePickerProps = {
-    value: DateRange<Moment>;
-    onChange: (newValue: DateRange<Moment>) => void;
-  }
+import { IRoomCategory } from "./types";
 
 export type RoomCategoryProps = {
     category: IRoomCategory;
