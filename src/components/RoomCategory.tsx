@@ -1,4 +1,6 @@
+import PersonIcon from "@mui/icons-material/Person";
 import {
+  Box,
   Paper,
   Table,
   TableBody,
@@ -12,14 +14,14 @@ import { RoomCategoryProps } from "../model/props";
 import { IRatePlan, IRoomInventoryCalendar } from "../model/types";
 
 export default function RoomCategory({ category }: RoomCategoryProps) {
-
   // For simplicity, extracting the pertinent data for the first 20 days.
-  const inventoryCalendar: IRoomInventoryCalendar[] = category.inventory_calendar.slice(0, 20);
+  const inventoryCalendar: IRoomInventoryCalendar[] =
+    category.inventory_calendar.slice(0, 20);
   const ratePlan: IRatePlan | undefined = category.rate_plans[0];
   const rateCalendar = ratePlan?.calendar.slice(0, 20) || [];
 
   // console.log("Category", category);
-  
+
   return (
     <TableContainer
       component={Paper}
@@ -28,11 +30,11 @@ export default function RoomCategory({ category }: RoomCategoryProps) {
         backgroundColor: "whitesmoke",
         border: "1px solid lightgray",
         borderRadius: "10px",
-        my: 5,
+        my: 5
       }}
     >
       <Table sx={{ width: "100vw", borderCollapse: "collapse" }}>
-        <TableHead sx={{ width: "100vw", border: "1px solid lightgray",}}>
+        <TableHead sx={{ width: "100vw", border: "1px solid lightgray" }}>
           <TableRow>
             <TableCell
               sx={{
@@ -180,7 +182,9 @@ export default function RoomCategory({ category }: RoomCategoryProps) {
             ))}
           </TableRow>
           <TableRow>
+            {/* {rateCalendar.map((item, index) => ( */}
             <TableCell
+              // key={item.id}
               sx={{
                 border: "1px solid lightgray",
                 p: 2,
@@ -192,7 +196,19 @@ export default function RoomCategory({ category }: RoomCategoryProps) {
               }}
             >
               Standard Rate
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "flex-start",
+                  alignItems: "center",
+                  color: "#2196f3",
+                  mt: 1
+                }}
+              >
+                <PersonIcon /> <Typography sx={{fontSize: '16px'}}>x {category.occupancy}</Typography>
+              </Box>
             </TableCell>
+            {/* ))} */}
             {rateCalendar.map((item, index) => (
               <TableCell
                 key={item.id}
