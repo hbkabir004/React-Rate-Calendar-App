@@ -20,8 +20,6 @@ export default function RoomCategory({ category }: RoomCategoryProps) {
   const ratePlan: IRatePlan | undefined = category.rate_plans[0];
   const rateCalendar = ratePlan?.calendar.slice(0, 20) || [];
 
-  // console.log("Category", category);
-
   return (
     <TableContainer
       component={Paper}
@@ -116,7 +114,6 @@ export default function RoomCategory({ category }: RoomCategoryProps) {
                   textAlign: "center",
                   bgcolor: item.status ? "#4CAF50" : "#F44336",
                   color: "white",
-                  // borderColor: "lightgray",
                 }}
               >
                 {item.status ? "Open" : "Closed"}
@@ -182,9 +179,7 @@ export default function RoomCategory({ category }: RoomCategoryProps) {
             ))}
           </TableRow>
           <TableRow>
-            {/* {rateCalendar.map((item, index) => ( */}
             <TableCell
-              // key={item.id}
               sx={{
                 border: "1px solid lightgray",
                 p: 2,
@@ -208,7 +203,6 @@ export default function RoomCategory({ category }: RoomCategoryProps) {
                 <PersonIcon /> <Typography sx={{fontSize: '16px'}}>x {category.occupancy}</Typography>
               </Box>
             </TableCell>
-            {/* ))} */}
             {rateCalendar.map((item, index) => (
               <TableCell
                 key={item.id}

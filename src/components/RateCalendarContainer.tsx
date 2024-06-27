@@ -20,9 +20,6 @@ export default function RateCalendarContainer() {
     endDate
   ) as UseRateCalendarResult;
 
-  // console.log(data);
-  data?.map((d) => console.log(d));
-
   return (
     <Container maxWidth="sm">
       <Box
