@@ -18,6 +18,8 @@ export default function RoomCategory({ category }: RoomCategoryProps) {
   const ratePlan: IRatePlan | undefined = category.rate_plans[0];
   const rateCalendar = ratePlan?.calendar.slice(0, 20) || [];
 
+  // console.log("Category", category);
+  
   return (
     <TableContainer
       component={Paper}
@@ -77,7 +79,7 @@ export default function RoomCategory({ category }: RoomCategoryProps) {
                 p: 2,
                 textAlign: "left",
                 fontWeight: 600,
-                fontSize: "20px",
+                fontSize: "1rem",
                 position: "sticky",
                 left: 0,
                 zIndex: 1,

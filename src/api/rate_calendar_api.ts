@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const BASE_URL =
-  "https://api.bytebeds.com/api/v1/property/1/room/rate-calendar/assessment/we";
+  "https://api.bytebeds.com/api/v1/property/1/room/rate-calendar/assessment";
 
 export const fetchRateCalendar = async (startDate: string, endDate: string) => {
   if (startDate && endDate) {

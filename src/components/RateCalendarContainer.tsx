@@ -1,5 +1,5 @@
 import { Box, CircularProgress, Container, Typography } from "@mui/material";
-import { Dayjs } from 'dayjs';
+import { Dayjs } from "dayjs";
 import { useState } from "react";
 import { useRateCalendar } from "../hooks/useRateCalendar";
 import { IRoomCategory, UseRateCalendarResult } from "../model/types";
@@ -7,12 +7,21 @@ import CustomDateRangePicker from "./CustomDateRangePicker";
 import RoomCategory from "./RoomCategory";
 
 export default function RateCalendarContainer() {
-  const [dateRange, setDateRange] = useState<[Dayjs | null, Dayjs | null]>([null, null]);
+  const [dateRange, setDateRange] = useState<[Dayjs | null, Dayjs | null]>([
+    null,
+    null,
+  ]);
 
   const startDate = dateRange[0]?.format("YYYY-MM-DD") || "";
   const endDate = dateRange[1]?.format("YYYY-MM-DD") || "";
 
-  const { data, isLoading, error } = useRateCalendar(startDate, endDate) as UseRateCalendarResult;
+  const { data, isLoading, error } = useRateCalendar(
+    startDate,
+    endDate
+  ) as UseRateCalendarResult;
+
+  // console.log(data);
+  data?.map((d) => console.log(d));
 
   return (
     <Container maxWidth="sm">
@@ -45,19 +54,26 @@ export default function RateCalendarContainer() {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          mt: '50px'
+          mt: "50px",
         }}
       >
-        {isLoading && (
-          <CircularProgress color="inherit" />
+        {isLoading && <CircularProgress color="inherit" />}
+        {error && (
+          <Typography variant="h5" color="error">
+            Failed to load data
+          </Typography>
         )}
-        {error && <Typography variant="h5" color="error">Failed to load data</Typography>}
+        {startDate && endDate && startDate > endDate === true && (
+          <Typography variant="h5" color="error">
+            You have selected INVALID date range
+          </Typography>
+        )}
       </Box>
-      
-        {data &&
-          data.map((category: IRoomCategory) => (
-            <RoomCategory key={category.id} category={category} />
-          ))}
+
+      {data &&
+        data.map((category: IRoomCategory) => (
+          <RoomCategory key={category.id} category={category} />
+        ))}
     </Container>
   );
 }
