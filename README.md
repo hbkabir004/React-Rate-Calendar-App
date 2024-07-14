@@ -1,4 +1,4 @@
-# Frontend Technical Assessment [GRIT System]
+# Exploring Tanstack React Query with MUI & REST API
 
 ## Rate Calendar App
 
